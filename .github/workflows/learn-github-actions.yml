@@ -1,0 +1,29 @@
+# ワークフローの名前
+name: learn-github-actions
+
+# ワークフローから生成されたワークフロー実行の名前
+run-name: ${{ github.actor }} is learning GitHub Actions
+
+# ワークフローのトリガー（pushした時）
+on: [push]
+
+# ワークフローで実行されるジョブ
+jobs:
+
+  # ジョブの名前を定義
+  check-bats-version:
+
+    # ジョブを最新のUbuntu Linuxで実行
+    runs-on: ubuntu-latest
+    
+    # ジョブのステップを定義
+    steps:
+
+      # コマンド実行
+      - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "This job is now running on a ${{ runner.os}} server hosted by Github!"
+      - run: echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+　　　# リポジトリをランナーにチェックアウト
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
